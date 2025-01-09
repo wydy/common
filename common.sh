@@ -840,7 +840,7 @@ if [[ "${SOURCE_CODE}" == "OFFICIAL" ]] && [[ "${REPO_BRANCH}" == "openwrt-19.07
   devicee="uci set network.ipv6.device='@lan'"
 fi
 
-: '
+: <<'EOF'
 # AdGuardHome内核
 if [[ "${AdGuardHome_Core}" == "1" ]]; then
   echo "AdGuardHome_Core=1" >> ${GITHUB_ENV}
@@ -863,7 +863,7 @@ if [[ -f "${luci_path}" ]] && [[ `grep -c "uci get openclash.config.enable" "${l
   sed -i '/uci -q set openclash.config.enable=0/i\if [[ "\$(uci get openclash.config.enable)" == "0" ]] || [[ -z "\$(uci get openclash.config.enable)" ]]; then' "${luci_path}"
   sed -i '/uci -q commit openclash/a\fi' "${luci_path}"
 fi
-'
+EOF
 
 if [[ "${Enable_IPV6_function}" == "1" ]]; then
   echo "固件加入IPV6功能"
