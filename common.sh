@@ -504,8 +504,8 @@ fi
 ./scripts/feeds update danshui2
 
 cp -Rf ${HOME_PATH}/feeds.conf.default ${HOME_PATH}/LICENSES/doc/uniq.conf
-}
 '
+}
 
 
 function Diy_Wenjian() {
