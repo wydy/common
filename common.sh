@@ -479,6 +479,7 @@ XWRT)
 ;;
 esac
 
+: '
 for X in $(ls -1 "${HOME_PATH}/feeds/passwall3"); do
   find . -type d -name "${X}" |grep -v 'danshui\|passwall3' |xargs -i rm -rf {}
 done
@@ -504,7 +505,7 @@ fi
 
 cp -Rf ${HOME_PATH}/feeds.conf.default ${HOME_PATH}/LICENSES/doc/uniq.conf
 }
-
+'
 
 
 function Diy_Wenjian() {
@@ -840,6 +841,7 @@ if [[ "${SOURCE_CODE}" == "OFFICIAL" ]] && [[ "${REPO_BRANCH}" == "openwrt-19.07
   devicee="uci set network.ipv6.device='@lan'"
 fi
 
+: '
 # AdGuardHome内核
 if [[ "${AdGuardHome_Core}" == "1" ]]; then
   echo "AdGuardHome_Core=1" >> ${GITHUB_ENV}
@@ -862,6 +864,7 @@ if [[ -f "${luci_path}" ]] && [[ `grep -c "uci get openclash.config.enable" "${l
   sed -i '/uci -q set openclash.config.enable=0/i\if [[ "\$(uci get openclash.config.enable)" == "0" ]] || [[ -z "\$(uci get openclash.config.enable)" ]]; then' "${luci_path}"
   sed -i '/uci -q commit openclash/a\fi' "${luci_path}"
 fi
+'
 
 if [[ "${Enable_IPV6_function}" == "1" ]]; then
   echo "固件加入IPV6功能"
